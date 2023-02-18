@@ -1,7 +1,26 @@
-(* Content-type: application/vnd.wolfram.mathematica *)
-
 (*** Wolfram Notebook File ***)
 (* http://www.wolfram.com/nb *)
+
+(**This is the code as I typed it in Mathematica**)
+(*Essentially this code produces a nice little graph of a line, fun right?*) 
+
+
+(*Euler's Method*)
+h = .1;(*step size or delta x*)
+upperbound = 1;(* x value want to iterate to*)
+iter = upperbound/h;(*the number of iterations*)
+x0 = 0;(*inital condition for x coord*)
+x[k_] = x0 + k*h;(*function that creates the x coord*)
+y[x0] = 1;(*intial condition for y coord*)
+Do[y[n + 1] = y[n] + h*(y[n] - (x[n]^2)/2), {n, 0, 
+   iter}]; (*loops using Euler's formula to create data*)
+data = Table[{x[i], y[i]}, {i, 0, 
+   iter}](*loop pulls data from y pairs with x data*)
+Euler = ListPlot[data, PlotStyle -> Green, PlotJoined -> True, 
+  AxesLabel -> {"x", "y"}]
+
+
+
 
 (* CreatedBy='Mathematica 12.3' *)
 
@@ -209,4 +228,6 @@ Cell[4755, 140, 1599, 41, 256, "Output",ExpressionUUID->"61464216-5722-492d-affe
 *)
 
 (* End of internal cache information *)
+
+
 
